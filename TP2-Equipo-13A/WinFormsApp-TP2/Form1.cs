@@ -22,5 +22,10 @@ namespace WinFormsApp_TP2
         {
 
         }
+
+        private void dgvLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
