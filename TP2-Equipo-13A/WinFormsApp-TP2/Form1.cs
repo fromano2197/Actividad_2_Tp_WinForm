@@ -1,4 +1,5 @@
-﻿using System;
+﻿using negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,12 +21,18 @@ namespace WinFormsApp_TP2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            dgvLista.AutoGenerateColumns = true;
+            try
+            {
+                ArticuloNegocio art = new ArticuloNegocio();
+                dgvLista.DataSource = art.listar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los datos: " + ex.Message);
+            }
         }
 
-        private void dgvLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
     }
 }

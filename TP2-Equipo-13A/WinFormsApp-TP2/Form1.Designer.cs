@@ -54,7 +54,6 @@
             this.dgvLista.Name = "dgvLista";
             this.dgvLista.Size = new System.Drawing.Size(417, 189);
             this.dgvLista.TabIndex = 2;
-            this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
             // 
             // btnAgregar
             // 
