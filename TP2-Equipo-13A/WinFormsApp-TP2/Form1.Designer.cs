@@ -41,9 +41,9 @@
             // 
             // ptbImagen
             // 
-            this.ptbImagen.Location = new System.Drawing.Point(521, 73);
+            this.ptbImagen.Location = new System.Drawing.Point(887, 73);
             this.ptbImagen.Name = "ptbImagen";
-            this.ptbImagen.Size = new System.Drawing.Size(328, 189);
+            this.ptbImagen.Size = new System.Drawing.Size(527, 305);
             this.ptbImagen.TabIndex = 1;
             this.ptbImagen.TabStop = false;
             // 
@@ -52,7 +52,7 @@
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLista.Location = new System.Drawing.Point(69, 73);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(417, 189);
+            this.dgvLista.Size = new System.Drawing.Size(745, 189);
             this.dgvLista.TabIndex = 2;
             // 
             // btnAgregar
@@ -100,7 +100,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(143, 27);
+            this.label1.Location = new System.Drawing.Point(406, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(260, 29);
             this.label1.TabIndex = 7;
@@ -111,7 +111,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(908, 404);
+            this.ClientSize = new System.Drawing.Size(1463, 404);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnEliminar);
