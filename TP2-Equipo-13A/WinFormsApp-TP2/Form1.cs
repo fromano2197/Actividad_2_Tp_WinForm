@@ -48,7 +48,7 @@ namespace WinFormsApp_TP2
             }
             catch (Exception ex)
             {
-               ptbImagen.Load("https://www.shutterstock.com/image-vector/404-error-page-not-found-260nw-1775265947.jpg");
+               ptbImagen.Load("https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg");
             }
         }
 
@@ -102,6 +102,27 @@ namespace WinFormsApp_TP2
         {
             Articulo selccionado = (Articulo)dgvLista.CurrentRow.DataBoundItem;
             cargarImagen(selccionado.UrlImagen.ToString());
+        }
+
+        private void txtBusquedaRapida_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+
+            string filtro = txtBusquedaRapida.Text;
+
+            if (filtro.Length >= 3)
+            {
+                listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+
+            }
+            else
+            {
+                listaFiltrada = listaArticulos;
+            }
+
+
+            dgvLista.DataSource = null;
+            dgvLista.DataSource = listaFiltrada;
         }
     }
 }
