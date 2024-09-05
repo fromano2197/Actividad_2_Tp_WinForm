@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace negocio
 {
@@ -21,10 +22,12 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; Integrated Security=True;";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion as Marca, ISNULL(C.Descripcion, 'Sin categoría') AS Categoria, A.Precio " +
+                comando.CommandText = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion as Marca, ISNULL(C.Descripcion, 'Sin categoría') AS Categoria, I.ImagenUrl, A.Precio " +
                               "from ARTICULOS A " +
                               "left join MARCAS M on A.IdMarca = M.Id " +
-                              "left join CATEGORIAS C on A.IdCategoria = C.Id";
+                              "left join CATEGORIAS C on A.IdCategoria = C.Id " +
+                              "left join IMAGENES I ON A.Id = I.Id";
+
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -41,6 +44,8 @@ namespace negocio
                     aux.Marca.Descripcion = (string)lector["Marca"];
                     aux.Categoria = new Categoria();
                     aux.Categoria.Descripcion = (string)lector["Categoria"];
+                    aux.UrlImagen = new Imagen();
+                    aux.UrlImagen.ImagenUrl = (string)lector["ImagenUrl"];
                     aux.Precio = (Decimal)lector["Precio"];
                     lista.Add(aux);
                 }

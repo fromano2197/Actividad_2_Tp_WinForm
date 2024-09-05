@@ -11,15 +11,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
 namespace WinFormsApp_TP2
 {
     public partial class frmPrincipal : Form
     {
-        private List<Articulo> ListaArticulos;
+        private List<Articulo> listaArticulos;
         public frmPrincipal()
         {
             InitializeComponent();
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -27,11 +29,26 @@ namespace WinFormsApp_TP2
             try
             {
                 ArticuloNegocio art = new ArticuloNegocio();
-                dgvLista.DataSource = art.listar();
+                listaArticulos = art.listar();
+                dgvLista.DataSource = listaArticulos;
+                dgvLista.Columns["UrlImagen"].Visible = false;
+                cargarImagen(listaArticulos[0].UrlImagen.ToString());
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error al cargar los datos: " + ex.Message);
+            }
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                ptbImagen.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+               ptbImagen.Load("https://www.shutterstock.com/image-vector/404-error-page-not-found-260nw-1775265947.jpg");
             }
         }
 
@@ -72,13 +89,19 @@ namespace WinFormsApp_TP2
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                ListaArticulos = negocio.listar();
-                dgvLista.DataSource = ListaArticulos;
+                listaArticulos = negocio.listar();
+                dgvLista.DataSource = listaArticulos;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void dgvLista_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo selccionado = (Articulo)dgvLista.CurrentRow.DataBoundItem;
+            cargarImagen(selccionado.UrlImagen.ToString());
         }
     }
 }
