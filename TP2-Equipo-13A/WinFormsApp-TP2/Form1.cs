@@ -34,6 +34,15 @@ namespace WinFormsApp_TP2
             }
         }
 
-       
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaArticulo frmAltaArticulo = new frmAltaArticulo();
+            frmAltaArticulo.ShowDialog();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
