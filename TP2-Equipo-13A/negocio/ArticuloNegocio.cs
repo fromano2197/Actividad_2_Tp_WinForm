@@ -21,7 +21,10 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; Integrated Security=True;";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion as Marca, C.Descripcion as Categoria, A.Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where A.Id=M.Id and A.Id=C.Id";
+                comando.CommandText = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion as Marca, ISNULL(C.Descripcion, 'Sin categoría') AS Categoria, A.Precio " +
+                              "from ARTICULOS A " +
+                              "left join MARCAS M on A.IdMarca = M.Id " +
+                              "left join CATEGORIAS C on A.IdCategoria = C.Id";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -38,7 +41,7 @@ namespace negocio
                     aux.Marca.Descripcion = (string)lector["Marca"];
                     aux.Categoria = new Categoria();
                     aux.Categoria.Descripcion = (string)lector["Categoria"];
-                    aux.Precio = (float)lector.GetDecimal(6);
+                    aux.Precio = (Decimal)lector["Precio"];
                     lista.Add(aux);
                 }
 
@@ -47,11 +50,25 @@ namespace negocio
             }
             catch (Exception ex)
             {
-                return lista;
-                //return ex;
+                throw ex;
             }
 
 
+        }
+        public void eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setConsulta("delete from ARTICULOS where id=@id");
+                datos.setearParametro("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
