@@ -113,16 +113,21 @@ namespace WinFormsApp_TP2
             if (filtro.Length >= 3)
             {
                 listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+                dgvLista.Columns["UrlImagen"].Visible = false;
 
             }
             else
             {
                 listaFiltrada = listaArticulos;
+                dgvLista.Columns["UrlImagen"].Visible = false;
+
             }
 
 
             dgvLista.DataSource = null;
             dgvLista.DataSource = listaFiltrada;
+            dgvLista.Columns["UrlImagen"].Visible = false;
+
         }
     }
 }
