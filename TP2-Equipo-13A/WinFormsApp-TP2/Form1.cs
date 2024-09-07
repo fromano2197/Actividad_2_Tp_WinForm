@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,9 +27,10 @@ namespace WinFormsApp_TP2
         private void Form1_Load(object sender, EventArgs e)
         {
             dgvLista.AutoGenerateColumns = true;
+            ArticuloNegocio art = new ArticuloNegocio();
             try
             {
-                ArticuloNegocio art = new ArticuloNegocio();
+                
                 listaArticulos = art.listar();
                 dgvLista.DataSource = listaArticulos;
                 dgvLista.Columns["UrlImagen"].Visible = false;

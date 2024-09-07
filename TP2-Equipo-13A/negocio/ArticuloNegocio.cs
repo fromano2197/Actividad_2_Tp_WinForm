@@ -26,7 +26,7 @@ namespace negocio
                               "from ARTICULOS A " +
                               "left join MARCAS M on A.IdMarca = M.Id " +
                               "left join CATEGORIAS C on A.IdCategoria = C.Id " +
-                              "left join IMAGENES I ON A.Id = I.Id";
+                              "left join IMAGENES I ON A.Id = I.IdArticulo";
 
                 comando.Connection = conexion;
 
@@ -45,7 +45,11 @@ namespace negocio
                     aux.Categoria = new Categoria();
                     aux.Categoria.Descripcion = (string)lector["Categoria"];
                     aux.UrlImagen = new Imagen();
-                    aux.UrlImagen.ImagenUrl = (string)lector["ImagenUrl"];
+                    if (!(lector["ImagenUrl"] is DBNull)) {
+
+                        aux.UrlImagen.ImagenUrl = (string)lector["ImagenUrl"];
+                    }
+                    
                     aux.Precio = (Decimal)lector["Precio"];
                     lista.Add(aux);
                 }
@@ -75,5 +79,47 @@ namespace negocio
                 throw ex;
             }
         }
+
+        public void agregar(Articulo nuevo)
+        {
+
+            AccesoDatos datos = new AccesoDatos();
+            ImagenNegocio imagen = new ImagenNegocio();
+
+            try
+            {
+                datos.setConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values (' " + nuevo.Codigo + "','" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', @IdMarca, @IdCategoria, @Precio)");
+                datos.setearParametro("@IdMarca", nuevo.Marca.Id);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
+                datos.setearParametro("@Precio", nuevo.Precio);
+
+                datos.ejecutarAccion();
+
+                if(nuevo.UrlImagen.ImagenUrl != null)
+                {
+
+                    imagen.agregar(nuevo.Id, nuevo.UrlImagen.ImagenUrl);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+
+                datos.cerrarConexion();
+
+            }
+        }
+
+        
     }
+
+
 }
+
+    
+

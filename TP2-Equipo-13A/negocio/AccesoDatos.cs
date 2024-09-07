@@ -54,6 +54,7 @@ namespace negocio
             {
                 conexion.Open();
                 comando.ExecuteNonQuery();
+                conexion.Close();
 
             }
             catch (Exception ex)

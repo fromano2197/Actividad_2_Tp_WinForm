@@ -15,5 +15,10 @@ namespace dominio
         {
             return ImagenUrl;
         }
+
+        public static explicit operator Imagen(string v)
+       {
+            throw new NotImplementedException();
+       }
     }
 }
