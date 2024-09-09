@@ -99,7 +99,7 @@ namespace negocio
                 if(nuevo.UrlImagen.ImagenUrl != null)
                 {
 
-                    imagen.agregar(nuevo.Id, nuevo.UrlImagen.ImagenUrl);
+                    imagen.agregar(nuevo.UrlImagen.ImagenUrl);
 
                 }
             }

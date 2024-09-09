@@ -46,7 +46,7 @@ namespace negocio
 
         }
 
-        public void agregar(int IdArticulo, string ImagenUrl)
+        public void agregar(string ImagenUrl)
         {
 
             AccesoDatos datos = new AccesoDatos();
