@@ -40,6 +40,12 @@ namespace WinFormsApp_TP2
             {
                 MessageBox.Show("Ocurrió un error al cargar los datos: " + ex.Message);
             }
+
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Descripcion");
+            cboCampo.Items.Add("Marca");
+            cboCampo.Items.Add("Categoria");
+            cboCampo.Items.Add("Precio");
         }
 
         private void cargarImagen(string imagen)
@@ -58,6 +64,7 @@ namespace WinFormsApp_TP2
         {
             frmAltaArticulo frmAltaArticulo = new frmAltaArticulo();
             frmAltaArticulo.ShowDialog();
+            cargar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -130,6 +137,44 @@ namespace WinFormsApp_TP2
             dgvLista.DataSource = listaFiltrada;
             dgvLista.Columns["UrlImagen"].Visible = false;
 
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+
+            if (opcion == "Precio")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+                dgvLista.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
