@@ -176,5 +176,15 @@ namespace WinFormsApp_TP2
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvLista.CurrentRow.DataBoundItem;
+
+            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+            modificar.ShowDialog();
+            cargar();
+        }
     }
 }

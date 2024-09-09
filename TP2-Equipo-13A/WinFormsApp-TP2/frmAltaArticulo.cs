@@ -15,13 +15,21 @@ namespace WinFormsApp_TP2
 {
     public partial class frmAltaArticulo : Form
     {
+        private Articulo articulo = null;
+
         public frmAltaArticulo()
         {
             InitializeComponent();
         }
+        public frmAltaArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
 
-     
-        
+        }
+
+
+
 
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
@@ -73,11 +81,24 @@ namespace WinFormsApp_TP2
             CategoriaNegocio categoriaNegocio = new negocio.CategoriaNegocio();
             //ImagenNegocio imagenNegocio = new negocio.ImagenNegocio();
 
+
+
             try
             {
                 cboMarca.DataSource = marcaNegocio.listar();
                 cboCategoria.DataSource = categoriaNegocio.listar();
                 //txtURL.Text = imagenNegocio.ToString();
+
+                if(articulo != null)
+                {
+                    txtCodigo.Text = articulo.Codigo;
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    txtURL.Text = articulo.UrlImagen.ImagenUrl;
+                    cargarImagen(articulo.UrlImagen.ImagenUrl);
+                    txtPrecio.Text = articulo.Precio.ToString();
+
+                }
             }
             catch (Exception ex)
             {
