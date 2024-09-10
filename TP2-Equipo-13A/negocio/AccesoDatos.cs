@@ -44,6 +44,7 @@ namespace negocio
 
                 throw ex;
             }
+            
         }
 
         public void ejecutarAccion()
@@ -62,6 +63,7 @@ namespace negocio
 
                 throw ex;
             }
+            
         }
 
         public void setearParametro(string nombre, object valor)
