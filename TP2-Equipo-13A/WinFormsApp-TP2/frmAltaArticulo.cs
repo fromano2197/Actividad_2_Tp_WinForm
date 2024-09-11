@@ -25,7 +25,7 @@ namespace WinFormsApp_TP2
         {
             InitializeComponent();
             this.articulo = articulo;
-
+            Text = "Modificar Articulo";
         }
 
 
@@ -33,35 +33,46 @@ namespace WinFormsApp_TP2
 
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
-            Articulo nuevo = new Articulo();
+            //Articulo nuevo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
             {
-                nuevo.Codigo = (string)txtCodigo.Text;
-                nuevo.Nombre = (string)txtNombre.Text;
-                nuevo.Descripcion = (string)txtDescripcion.Text;
-                nuevo.UrlImagen = new Imagen();
-                nuevo.UrlImagen.ImagenUrl = (string)txtURL.Text;
-                nuevo.Categoria = (Categoria)cboCategoria.SelectedItem;
-                nuevo.Marca = (Marca)cboMarca.SelectedItem;
+                if (articulo == null)
+                {
+                    articulo = new Articulo(); 
+                }
+                articulo.Codigo = (string)txtCodigo.Text;
+                articulo.Nombre = (string)txtNombre.Text;
+                articulo.Descripcion = (string)txtDescripcion.Text;
+                articulo.UrlImagen = new Imagen();
+                articulo.UrlImagen.ImagenUrl = (string)txtURL.Text;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
                 int p = 0;
                 if (Int32.TryParse(txtPrecio.Text,out p))
                 {
-                    nuevo.Precio = p;
+                    articulo.Precio = p;
                 }
                 else
                 {
-                    nuevo.Precio = 0;
+                    articulo.Precio = 0;
                 }
            
-
-                negocio.agregar(nuevo);
-
-                MessageBox.Show("Articulo agregado con exito");
+                if (articulo.Id ==0 )
+                {
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Articulo agregado con exito");
+                }
+                else
+                {
+                    negocio.modificar(articulo);
+                    MessageBox.Show("Articulo modificado con exito");
+                }
+                
                 negocio.listar();
                 Close();
-
+                
             }
             catch (Exception ex)
             {
@@ -100,7 +111,7 @@ namespace WinFormsApp_TP2
                     txtDescripcion.Text = articulo.Descripcion;
                     txtURL.Text = articulo.UrlImagen.ImagenUrl;
                     cargarImagen(articulo.UrlImagen.ImagenUrl);
-                    
+
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
                     txtPrecio.Text = articulo.Precio.ToString();

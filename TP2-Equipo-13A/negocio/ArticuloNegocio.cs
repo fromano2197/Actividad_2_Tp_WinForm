@@ -45,7 +45,13 @@ namespace negocio
                     aux.Marca.Id = (int)lector["Id"];
                     aux.Marca.Descripcion = (string)lector["Marca"];
                     aux.Categoria = new Categoria();
-                    aux.Categoria.Id = (int)lector["Id"];
+                    if (lector["Id"] is DBNull)
+                    {
+                        aux.Categoria.Id = -1;
+                    } else
+                    {
+                        aux.Categoria.Id = (int)lector["Id"]; 
+                    }
                     aux.Categoria.Descripcion = (string)lector["Categoria"];
                     aux.UrlImagen = new Imagen();
                     if (!(lector["ImagenUrl"] is DBNull)) {
@@ -240,7 +246,31 @@ namespace negocio
             }
         }
 
+        public void modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria where Id=@Id");
+                datos.setearParametro("@Codigo", articulo.Codigo);
+                datos.setearParametro("@Nombre", articulo.Nombre);
+                datos.setearParametro("@Descripcion", articulo.Descripcion);
+                datos.setearParametro("@IdMarca", articulo.Marca.Id);
+                datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
+                datos.setearParametro("@Id", articulo.Id);
 
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex )
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 
 
