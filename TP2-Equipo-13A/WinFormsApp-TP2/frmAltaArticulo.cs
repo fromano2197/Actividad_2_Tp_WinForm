@@ -49,8 +49,8 @@ namespace WinFormsApp_TP2
                 articulo.UrlImagen.ImagenUrl = (string)txtURL.Text;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
-                int p = 0;
-                if (Int32.TryParse(txtPrecio.Text,out p))
+                decimal p = 0;
+                if (decimal.TryParse(txtPrecio.Text,out p))
                 {
                     articulo.Precio = p;
                 }
