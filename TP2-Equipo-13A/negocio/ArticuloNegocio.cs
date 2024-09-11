@@ -23,7 +23,7 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; Integrated Security=True;";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Id, M.Descripcion as Marca, C.Id, ISNULL(C.Descripcion, 'Sin categoría') AS Categoria, I.ImagenUrl, A.Precio " +
+                comando.CommandText = "select A.Id IdArticulo, A.Codigo, A.Nombre, A.Descripcion, M.Id IdMarca, M.Descripcion as Marca, C.Id IdCategoria, ISNULL(C.Descripcion, 'Sin categoría') AS Categoria, I.ImagenUrl, A.Precio " +
                               "from ARTICULOS A " +
                               "left join MARCAS M on A.IdMarca = M.Id " +
                               "left join CATEGORIAS C on A.IdCategoria = C.Id " +
@@ -42,15 +42,15 @@ namespace negocio
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.Marca = new Marca();
-                    aux.Marca.Id = (int)lector["Id"];
+                    aux.Marca.Id = (int)lector["IdMarca"];
                     aux.Marca.Descripcion = (string)lector["Marca"];
                     aux.Categoria = new Categoria();
-                    if (lector["Id"] is DBNull)
+                    if (lector["IdCategoria"] is DBNull)
                     {
                         aux.Categoria.Id = -1;
                     } else
                     {
-                        aux.Categoria.Id = (int)lector["Id"]; 
+                        aux.Categoria.Id = (int)lector["IdCategoria"]; 
                     }
                     aux.Categoria.Descripcion = (string)lector["Categoria"];
                     aux.UrlImagen = new Imagen();
