@@ -12,7 +12,7 @@ namespace negocio
 
         public List<Marca> listar()
         {
-			List<Marca> lista= new List<Marca>();
+			List<Marca> lista = new List<Marca>();
 			AccesoDatos datos = new AccesoDatos();
 
 

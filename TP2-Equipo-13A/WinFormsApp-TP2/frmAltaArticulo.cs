@@ -86,16 +86,23 @@ namespace WinFormsApp_TP2
             try
             {
                 cboMarca.DataSource = marcaNegocio.listar();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
                 cboCategoria.DataSource = categoriaNegocio.listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
                 //txtURL.Text = imagenNegocio.ToString();
 
-                if(articulo != null)
+                if (articulo != null)
                 {
                     txtCodigo.Text = articulo.Codigo;
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
                     txtURL.Text = articulo.UrlImagen.ImagenUrl;
                     cargarImagen(articulo.UrlImagen.ImagenUrl);
+                    
+                    cboMarca.SelectedValue = articulo.Marca.Id;
+                    cboCategoria.SelectedValue = articulo.Categoria.Id;
                     txtPrecio.Text = articulo.Precio.ToString();
 
                 }
