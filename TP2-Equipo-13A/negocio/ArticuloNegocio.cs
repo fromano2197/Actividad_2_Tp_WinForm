@@ -130,11 +130,11 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion as Marca, ISNULL(C.Descripcion, 'Sin categoría') AS Categoria, I.ImagenUrl, A.Precio " +
+                string consulta = "select distinct A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion as Marca, ISNULL(C.Descripcion, 'Sin categoría') AS Categoria, I.ImagenUrl, A.Precio " +
                               "from ARTICULOS A " +
                               "left join MARCAS M on A.IdMarca = M.Id " +
                               "left join CATEGORIAS C on A.IdCategoria = C.Id " +
-                              "left join IMAGENES I ON A.Id = I.IdArticulo WHERE ";
+                              "left join IMAGENES I ON A.Id = I.Id WHERE ";
 
                 switch (campo)
                 {
