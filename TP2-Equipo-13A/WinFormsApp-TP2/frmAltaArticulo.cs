@@ -33,7 +33,7 @@ namespace WinFormsApp_TP2
 
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
-            //Articulo nuevo = new Articulo();
+     
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
@@ -108,7 +108,7 @@ namespace WinFormsApp_TP2
                     txtCodigo.Text = articulo.Codigo;
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
-                    txtURL.Text = articulo.UrlImagen?.ImagenUrl ?? ""; // Usa el operador null-coalescing
+                    txtURL.Text = articulo.UrlImagen?.ImagenUrl ?? ""; 
                     cargarImagen(txtURL.Text);
 
                     cboMarca.SelectedValue = articulo.Marca.Id;
