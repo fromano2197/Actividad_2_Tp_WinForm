@@ -45,8 +45,11 @@ namespace WinFormsApp_TP2
                 articulo.Codigo = (string)txtCodigo.Text;
                 articulo.Nombre = (string)txtNombre.Text;
                 articulo.Descripcion = (string)txtDescripcion.Text;
-                articulo.UrlImagen = new Imagen();
-                articulo.UrlImagen.ImagenUrl = (string)txtURL.Text;
+                if (articulo.UrlImagen == null)
+                {
+                    articulo.UrlImagen = new Imagen();
+                }
+                articulo.UrlImagen.ImagenUrl = txtURL.Text;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 decimal p = 0;
@@ -90,9 +93,6 @@ namespace WinFormsApp_TP2
         {
             MarcaNegocio marcaNegocio = new negocio.MarcaNegocio();
             CategoriaNegocio categoriaNegocio = new negocio.CategoriaNegocio();
-            //ImagenNegocio imagenNegocio = new negocio.ImagenNegocio();
-
-
 
             try
             {
@@ -102,25 +102,22 @@ namespace WinFormsApp_TP2
                 cboCategoria.DataSource = categoriaNegocio.listar();
                 cboCategoria.ValueMember = "Id";
                 cboCategoria.DisplayMember = "Descripcion";
-                //txtURL.Text = imagenNegocio.ToString();
 
                 if (articulo != null)
                 {
                     txtCodigo.Text = articulo.Codigo;
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
-                    txtURL.Text = articulo.UrlImagen.ImagenUrl;
-                    cargarImagen(articulo.UrlImagen.ImagenUrl);
+                    txtURL.Text = articulo.UrlImagen?.ImagenUrl ?? ""; // Usa el operador null-coalescing
+                    cargarImagen(txtURL.Text);
 
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
                     txtPrecio.Text = articulo.Precio.ToString();
-
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
         }

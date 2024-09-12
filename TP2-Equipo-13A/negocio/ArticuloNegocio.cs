@@ -248,30 +248,63 @@ namespace negocio
 
         public void modificar(Articulo articulo)
         {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio where Id=@Id");
-                datos.setearParametro("@Codigo", articulo.Codigo);
-                datos.setearParametro("@Nombre", articulo.Nombre);
-                datos.setearParametro("@Descripcion", articulo.Descripcion);
-                datos.setearParametro("@IdMarca", articulo.Marca.Id);
-                datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
-                datos.setearParametro("@Precio", articulo.Precio);
-                datos.setearParametro("@Id", articulo.Id);
+            ActualizarArticulo(articulo);
 
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex )
+            if (articulo.UrlImagen != null)
             {
-
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
+                ActualizarImagen(articulo.Id, articulo.UrlImagen.ImagenUrl);
             }
         }
+
+        private void ActualizarArticulo(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            {
+                try
+                {
+                    string consultaArticulo = "UPDATE ARTICULOS  SET Codigo = @Codigo,Nombre = @Nombre,Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria,Precio = @Precio WHERE Id = @Id;";
+
+                    datos.setConsulta(consultaArticulo);
+                    datos.setearParametro("@Codigo", articulo.Codigo);
+                    datos.setearParametro("@Nombre", articulo.Nombre);
+                    datos.setearParametro("@Descripcion", articulo.Descripcion);
+                    datos.setearParametro("@IdMarca", articulo.Marca.Id);
+                    datos.setearParametro("@IdCategoria", articulo.Categoria.Id);
+                    datos.setearParametro("@Precio", articulo.Precio);
+                    datos.setearParametro("@Id", articulo.Id);
+
+                    datos.ejecutarAccion();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        private void ActualizarImagen(int articuloId, string imagenUrl)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            {
+                try
+                {
+                    string consultaImagen = "UPDATE IMAGENES SET ImagenUrl = @ImagenUrl  WHERE Id = @Id;";
+
+                    datos.setConsulta(consultaImagen);
+                    datos.setearParametro("@ImagenUrl", imagenUrl ?? (object)DBNull.Value);
+                    datos.setearParametro("@Id", articuloId);
+
+                    datos.ejecutarAccion();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
+
     }
 
 
