@@ -54,7 +54,7 @@ namespace WinFormsApp_TP2
             {
                 ptbImagen.Load(imagen);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                ptbImagen.Load("https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg");
             }
@@ -161,21 +161,33 @@ namespace WinFormsApp_TP2
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
+            if (cboCampo.SelectedItem == null || cboCriterio.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, selecciona tanto un campo como un criterio antes de filtrar.");
+                return;
+            }
+
+            string campo = cboCampo.SelectedItem.ToString();
+            string criterio = cboCriterio.SelectedItem.ToString();
+            string filtro = txtFiltroAvanzado.Text;
+
+            if (string.IsNullOrEmpty(filtro))
+            {
+                dgvLista.DataSource = listaArticulos;
+                return;
+            }
+
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                string campo = cboCampo.SelectedItem.ToString();
-                string criterio = cboCriterio.SelectedItem.ToString();
-                string filtro = txtFiltroAvanzado.Text;
                 dgvLista.DataSource = negocio.filtrar(campo, criterio, filtro);
-
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ocurrió un error al filtrar: " + ex.Message);
             }
         }
+
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -185,6 +197,11 @@ namespace WinFormsApp_TP2
             frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
             modificar.ShowDialog();
             cargar();
+        }
+
+        private void txtFiltroAvanzado_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
