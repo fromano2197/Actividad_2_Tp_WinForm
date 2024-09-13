@@ -237,5 +237,32 @@ namespace WinFormsApp_TP2
         {
             this.WindowState= FormWindowState.Minimized;
         }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            if (dgvLista.CurrentRow != null)
+            {
+                Articulo seleccionado = dgvLista.CurrentRow.DataBoundItem as Articulo;
+                if (seleccionado != null)
+                {
+                    frmAgregarImagen modificar = new frmAgregarImagen(seleccionado);
+                    if (modificar.ShowDialog() == DialogResult.OK)
+                    {
+                        cargar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El artículo seleccionado no es válido.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un artículo para modificar.");
+            }
+
+            cargar();
+        }
     }
-}
+    }
+

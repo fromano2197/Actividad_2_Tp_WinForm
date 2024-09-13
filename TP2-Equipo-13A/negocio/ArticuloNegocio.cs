@@ -107,7 +107,7 @@ namespace negocio
                 if(nuevo.UrlImagen.ImagenUrl != null)
                 {
 
-                    imagen.agregar(nuevo.UrlImagen.ImagenUrl);
+                    imagen.agregar(0, nuevo.UrlImagen.ImagenUrl, false);
 
                 }
             }
