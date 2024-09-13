@@ -30,7 +30,7 @@ namespace WinFormsApp_TP2
             ArticuloNegocio art = new ArticuloNegocio();
             try
             {
-                
+
                 listaArticulos = art.listar();
                 dgvLista.DataSource = listaArticulos;
                 dgvLista.Columns["UrlImagen"].Visible = false;
@@ -54,9 +54,9 @@ namespace WinFormsApp_TP2
             {
                 ptbImagen.Load(imagen);
             }
-            catch (Exception )
+            catch (Exception)
             {
-               ptbImagen.Load("https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg");
+                ptbImagen.Load("https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg");
             }
         }
 
@@ -74,7 +74,7 @@ namespace WinFormsApp_TP2
 
         private void eliminar()
         {
-            ArticuloNegocio negocio = new  ArticuloNegocio();
+            ArticuloNegocio negocio = new ArticuloNegocio();
             Articulo seleccionado;
             try
             {
@@ -159,6 +159,7 @@ namespace WinFormsApp_TP2
             }
         }
 
+
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             if (cboCampo.SelectedItem == null || cboCriterio.SelectedItem == null)
@@ -191,17 +192,26 @@ namespace WinFormsApp_TP2
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado;
-            seleccionado = (Articulo)dgvLista.CurrentRow.DataBoundItem;
-
-            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
-            modificar.ShowDialog();
-            cargar();
-        }
-
-        private void txtFiltroAvanzado_TextChanged(object sender, EventArgs e)
-        {
-
+            if (dgvLista.CurrentRow != null)
+            {
+                Articulo seleccionado = dgvLista.CurrentRow.DataBoundItem as Articulo;
+                if (seleccionado != null)
+                {
+                    frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+                    if (modificar.ShowDialog() == DialogResult.OK)
+                    {
+                        cargar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El artículo seleccionado no es válido.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un artículo para modificar.");
+            }
         }
     }
 }
