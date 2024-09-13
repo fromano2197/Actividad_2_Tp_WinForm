@@ -27,7 +27,7 @@ namespace negocio
                               "from ARTICULOS A " +
                               "left join MARCAS M on A.IdMarca = M.Id " +
                               "left join CATEGORIAS C on A.IdCategoria = C.Id " +
-                              "left join IMAGENES I ON A.Id = I.Id";
+                              "left join IMAGENES I ON A.Id = I.IdArticulo";
 
                 comando.Connection = conexion;
 

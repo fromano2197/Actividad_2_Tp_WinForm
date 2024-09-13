@@ -213,5 +213,29 @@ namespace WinFormsApp_TP2
                 MessageBox.Show("Por favor, selecciona un artículo para modificar.");
             }
         }
+
+        private void iconoCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); 
+        }
+
+        private void iconoMaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            iconoRestaurar.Visible = true;
+            iconoMaximizar.Visible = false;
+        }
+
+        private void iconoRestaurar_Click(object sender, EventArgs e)
+        {
+            this.WindowState=FormWindowState.Normal;
+            iconoRestaurar.Visible = false;
+            iconoMaximizar.Visible = true;
+        }
+
+        private void iconoMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState= FormWindowState.Minimized;
+        }
     }
 }
