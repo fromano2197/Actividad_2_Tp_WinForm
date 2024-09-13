@@ -46,30 +46,43 @@ namespace negocio
 
         }
 
-        public void agregar(int idArticulo, string ImagenUrl, bool edicion)
+        public void agregar(string ImagenUrl)
         {
 
-            int id = 0;
+            
 
             AccesoDatos datos = new AccesoDatos();
 
             try
+            { 
+                Articulo aux = new Articulo();
+
+                aux = buscarUltimoArticulo();
+
+                datos.setConsulta("insert into IMAGENES values (' " + aux.Id + "', ' " + ImagenUrl + "')");
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
             {
-                if (!edicion)
-                {
-                    Articulo aux = new Articulo();
 
-                    aux = buscarUltimoArticulo();
-                    id = aux.Id;   
-                    
+                throw ex;
+            }
+            finally
+            {
 
-                    
-                }
-                else 
-                { 
-                    id = idArticulo;    
-                }
-                datos.setConsulta("insert into IMAGENES values (' " + id + "', ' " + ImagenUrl + "')");
+                datos.cerrarConexion();
+
+            }
+        }
+        public void agregar(int idArticulo, string ImagenUrl)
+        {
+
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {    
+                datos.setConsulta("insert into IMAGENES values (' " + idArticulo + "', ' " + ImagenUrl + "')");
 
                 datos.ejecutarAccion();
             }

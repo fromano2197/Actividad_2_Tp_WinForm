@@ -71,7 +71,7 @@ namespace WinFormsApp_TP2
                 if (articulo.UrlImagen.ImagenUrl != null)
                 {
 
-                    imagen.agregar(articulo.Id, articulo.UrlImagen.ImagenUrl, true);
+                    imagen.agregar(articulo.Id, articulo.UrlImagen.ImagenUrl);
                     MessageBox.Show("Imagen agregada con exito");
 
                 }
