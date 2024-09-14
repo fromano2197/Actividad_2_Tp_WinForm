@@ -23,7 +23,23 @@ namespace WinFormsApp_TP2
              frmPrincipal inventario = new frmPrincipal();
             inventario.ShowDialog();
         }
-         
-     
+
+        private void frmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pboAgregarMarcas_Click(object sender, EventArgs e)
+        {
+            frmAltaMarca marca = new frmAltaMarca();
+            marca.ShowDialog();
+
+        }
+
+        private void pboAgregarCategorias_Click(object sender, EventArgs e)
+        {
+            frmAltaCategoria categoria = new frmAltaCategoria();
+            categoria.ShowDialog();
+        }
     }
 }

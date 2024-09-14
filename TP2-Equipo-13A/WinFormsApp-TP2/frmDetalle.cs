@@ -38,7 +38,8 @@ namespace WinFormsApp_TP2
 
                 txtMarcaDetalle.Text = articulo.Marca.Descripcion;
                 txtCategoriaDetalle.Text = articulo.Categoria.Descripcion;
-                txtPrecioDetalle.Text = articulo.Precio.ToString();
+                txtPrecioDetalle.Text = "$" + articulo.Precio.ToString("F2");
+               
 
             }
             catch (Exception ex)
@@ -57,6 +58,11 @@ namespace WinFormsApp_TP2
             {
                 ptbImagen.Load("https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg");
             }
+        }
+
+        private void txtPrecioDetalle_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

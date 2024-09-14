@@ -38,6 +38,8 @@ namespace WinFormsApp_TP2
                 dgvLista.Columns["Codigo"].Visible = false;
                 dgvLista.Columns["Id"].Visible = false;
                 dgvLista.Columns["Descripcion"].Visible = false;
+                dgvLista.Columns["Precio"].DefaultCellStyle.Format = "N2";
+                dgvLista.Columns["Precio"].DefaultCellStyle.Format = "C2";
 
                 cargarImagen(listaArticulos[0].UrlImagen.ToString());
             }
@@ -128,12 +130,16 @@ namespace WinFormsApp_TP2
             {
                 listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()));
                 dgvLista.Columns["UrlImagen"].Visible = false;
+                dgvLista.Columns["Precio"].DefaultCellStyle.Format = "N2";
+                dgvLista.Columns["Precio"].DefaultCellStyle.Format = "C2";
 
             }
             else
             {
                 listaFiltrada = listaArticulos;
                 dgvLista.Columns["UrlImagen"].Visible = false;
+                dgvLista.Columns["Precio"].DefaultCellStyle.Format = "N2";
+                dgvLista.Columns["Precio"].DefaultCellStyle.Format = "C2";
 
             }
 
@@ -141,6 +147,8 @@ namespace WinFormsApp_TP2
             dgvLista.DataSource = null;
             dgvLista.DataSource = listaFiltrada;
             dgvLista.Columns["UrlImagen"].Visible = false;
+            dgvLista.Columns["Precio"].DefaultCellStyle.Format = "N2";
+            dgvLista.Columns["Precio"].DefaultCellStyle.Format = "C2";
 
         }
 

@@ -44,12 +44,12 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(73, 11);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(116, 11);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(300, 150);
+            this.pictureBox2.Size = new System.Drawing.Size(399, 184);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 24;
             this.pictureBox2.TabStop = false;
@@ -57,11 +57,13 @@
             // pboInventario
             // 
             this.pboInventario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pboInventario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pboInventario.Image = ((System.Drawing.Image)(resources.GetObject("pboInventario.Image")));
             this.pboInventario.InitialImage = null;
-            this.pboInventario.Location = new System.Drawing.Point(2, 178);
+            this.pboInventario.Location = new System.Drawing.Point(13, 229);
+            this.pboInventario.Margin = new System.Windows.Forms.Padding(4);
             this.pboInventario.Name = "pboInventario";
-            this.pboInventario.Size = new System.Drawing.Size(150, 150);
+            this.pboInventario.Size = new System.Drawing.Size(175, 158);
             this.pboInventario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboInventario.TabIndex = 25;
             this.pboInventario.TabStop = false;
@@ -70,34 +72,41 @@
             // pboAgregarMarcas
             // 
             this.pboAgregarMarcas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pboAgregarMarcas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pboAgregarMarcas.Image = ((System.Drawing.Image)(resources.GetObject("pboAgregarMarcas.Image")));
             this.pboAgregarMarcas.InitialImage = null;
-            this.pboAgregarMarcas.Location = new System.Drawing.Point(158, 178);
+            this.pboAgregarMarcas.Location = new System.Drawing.Point(220, 229);
+            this.pboAgregarMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.pboAgregarMarcas.Name = "pboAgregarMarcas";
-            this.pboAgregarMarcas.Size = new System.Drawing.Size(150, 150);
+            this.pboAgregarMarcas.Size = new System.Drawing.Size(179, 158);
             this.pboAgregarMarcas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboAgregarMarcas.TabIndex = 27;
             this.pboAgregarMarcas.TabStop = false;
+            this.pboAgregarMarcas.Click += new System.EventHandler(this.pboAgregarMarcas_Click);
             // 
             // pboAgregarCategorias
             // 
             this.pboAgregarCategorias.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pboAgregarCategorias.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pboAgregarCategorias.Image = ((System.Drawing.Image)(resources.GetObject("pboAgregarCategorias.Image")));
             this.pboAgregarCategorias.InitialImage = null;
-            this.pboAgregarCategorias.Location = new System.Drawing.Point(314, 178);
+            this.pboAgregarCategorias.Location = new System.Drawing.Point(430, 229);
+            this.pboAgregarCategorias.Margin = new System.Windows.Forms.Padding(4);
             this.pboAgregarCategorias.Name = "pboAgregarCategorias";
-            this.pboAgregarCategorias.Size = new System.Drawing.Size(150, 150);
+            this.pboAgregarCategorias.Size = new System.Drawing.Size(186, 158);
             this.pboAgregarCategorias.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboAgregarCategorias.TabIndex = 28;
             this.pboAgregarCategorias.TabStop = false;
+            this.pboAgregarCategorias.Click += new System.EventHandler(this.pboAgregarCategorias_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 331);
+            this.label1.Location = new System.Drawing.Point(50, 407);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 16);
+            this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 29;
             this.label1.Text = "Inventario";
             // 
@@ -105,9 +114,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(202, 331);
+            this.label3.Location = new System.Drawing.Point(274, 407);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 16);
+            this.label3.Size = new System.Drawing.Size(71, 20);
             this.label3.TabIndex = 31;
             this.label3.Text = "Marcas";
             // 
@@ -115,18 +125,19 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(343, 331);
+            this.label4.Location = new System.Drawing.Point(474, 407);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 16);
+            this.label4.Size = new System.Drawing.Size(100, 20);
             this.label4.TabIndex = 32;
             this.label4.Text = "Categorias";
             // 
             // frmMenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(474, 354);
+            this.ClientSize = new System.Drawing.Size(629, 458);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -135,12 +146,15 @@
             this.Controls.Add(this.pboInventario);
             this.Controls.Add(this.pictureBox2);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(490, 419);
+            this.MaximumSize = new System.Drawing.Size(647, 505);
             this.MinimizeBox = false;
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
+            this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboInventario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboAgregarMarcas)).EndInit();
