@@ -35,6 +35,10 @@ namespace WinFormsApp_TP2
                 listaArticulos = art.listar();
                 dgvLista.DataSource = listaArticulos;
                 dgvLista.Columns["UrlImagen"].Visible = false;
+                dgvLista.Columns["Codigo"].Visible = false;
+                dgvLista.Columns["Id"].Visible = false;
+                dgvLista.Columns["Descripcion"].Visible = false;
+
                 cargarImagen(listaArticulos[0].UrlImagen.ToString());
             }
             catch (Exception ex)
@@ -264,6 +268,31 @@ namespace WinFormsApp_TP2
 
             cargar();
         }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            if (dgvLista.CurrentRow != null)
+            {
+                Articulo seleccionado = dgvLista.CurrentRow.DataBoundItem as Articulo;
+                if (seleccionado != null)
+                {
+                    frmDetalle modificar = new frmDetalle(seleccionado);
+                    if (modificar.ShowDialog() == DialogResult.OK)
+                    {
+                        cargar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El artículo seleccionado no es válido.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un artículo para modificar.");
+            }
+        }
     }
     }
+    
 
