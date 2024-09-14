@@ -51,7 +51,7 @@
             // txtURLImagen
             // 
             this.txtURLImagen.Location = new System.Drawing.Point(256, 54);
-            this.txtURLImagen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtURLImagen.Margin = new System.Windows.Forms.Padding(4);
             this.txtURLImagen.Name = "txtURLImagen";
             this.txtURLImagen.Size = new System.Drawing.Size(301, 22);
             this.txtURLImagen.TabIndex = 1;
@@ -60,7 +60,7 @@
             // ptbImagenNueva
             // 
             this.ptbImagenNueva.Location = new System.Drawing.Point(99, 98);
-            this.ptbImagenNueva.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ptbImagenNueva.Margin = new System.Windows.Forms.Padding(4);
             this.ptbImagenNueva.Name = "ptbImagenNueva";
             this.ptbImagenNueva.Size = new System.Drawing.Size(507, 308);
             this.ptbImagenNueva.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -69,8 +69,9 @@
             // 
             // btnAgregarImagen
             // 
+            this.btnAgregarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregarImagen.Location = new System.Drawing.Point(240, 438);
-            this.btnAgregarImagen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregarImagen.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(220, 33);
             this.btnAgregarImagen.TabIndex = 3;
@@ -91,7 +92,7 @@
             // txtArticuloSeleccionado
             // 
             this.txtArticuloSeleccionado.Location = new System.Drawing.Point(256, 22);
-            this.txtArticuloSeleccionado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtArticuloSeleccionado.Margin = new System.Windows.Forms.Padding(4);
             this.txtArticuloSeleccionado.Name = "txtArticuloSeleccionado";
             this.txtArticuloSeleccionado.Size = new System.Drawing.Size(301, 22);
             this.txtArticuloSeleccionado.TabIndex = 5;
@@ -109,7 +110,7 @@
             this.Controls.Add(this.txtURLImagen);
             this.Controls.Add(this.lblURLImagen);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAgregarImagen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Imagen";

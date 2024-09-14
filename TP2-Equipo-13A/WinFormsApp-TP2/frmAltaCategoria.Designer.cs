@@ -53,6 +53,7 @@
             // 
             // btnAgregarCategoria
             // 
+            this.btnAgregarCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregarCategoria.Location = new System.Drawing.Point(167, 229);
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
             this.btnAgregarCategoria.Size = new System.Drawing.Size(139, 32);
@@ -63,6 +64,7 @@
             // 
             // btnCancelarCategoria
             // 
+            this.btnCancelarCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelarCategoria.Location = new System.Drawing.Point(470, 229);
             this.btnCancelarCategoria.Name = "btnCancelarCategoria";
             this.btnCancelarCategoria.Size = new System.Drawing.Size(139, 32);
