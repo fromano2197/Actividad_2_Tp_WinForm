@@ -26,9 +26,17 @@ namespace WinFormsApp_TP2
             {
                 Categoria categoria = new Categoria();
                 categoria.Descripcion = txtAgregarCategoria.Text;
-                negocio.agregarMarca(categoria);
-                MessageBox.Show("Categoria agregada con exito");
-                this.Close();
+                if (categoria.Descripcion == "")
+                {
+                    MessageBox.Show("Por favor ingrese la categoria a agregar");
+                }
+                else{
+                    negocio.agregarMarca(categoria);
+                    MessageBox.Show("Categoria agregada con exito");
+                    this.Close();
+                }
+                    
+                
 
             }
             catch (Exception ex)

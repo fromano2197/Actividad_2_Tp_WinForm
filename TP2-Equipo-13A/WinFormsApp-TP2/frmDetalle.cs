@@ -38,7 +38,7 @@ namespace WinFormsApp_TP2
 
                 txtMarcaDetalle.Text = articulo.Marca.Descripcion;
                 txtCategoriaDetalle.Text = articulo.Categoria.Descripcion;
-                txtPrecioDetalle.Text = "$" + articulo.Precio.ToString("F2");
+                txtPrecioDetalle.Text = articulo.Precio.ToString("F2");
                
 
             }

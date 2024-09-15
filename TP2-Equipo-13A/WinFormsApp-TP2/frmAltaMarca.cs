@@ -27,9 +27,18 @@ namespace WinFormsApp_TP2
             {
                 Marca marca = new Marca();
                 marca.Descripcion = txtAgregarMarca.Text;
-                negocio.agregarMarca(marca);
-                MessageBox.Show("Marca agregada con exito");
-                this.Close();
+                if(marca.Descripcion == "")
+                {
+                    MessageBox.Show("Por favor ingrese la Marca a agregar");
+
+                }
+                else
+                {
+                    negocio.agregarMarca(marca);
+                    MessageBox.Show("Marca agregada con exito");
+                    this.Close();
+                }
+                
 
             }
             catch (Exception ex)

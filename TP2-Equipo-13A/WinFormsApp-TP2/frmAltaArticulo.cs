@@ -113,7 +113,7 @@ namespace WinFormsApp_TP2
 
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
-                    txtPrecio.Text = "$" + articulo.Precio.ToString("F2");
+                    txtPrecio.Text = articulo.Precio.ToString("F2");
                 }
             }
             catch (Exception ex)
